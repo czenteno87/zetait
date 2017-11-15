@@ -233,20 +233,51 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">¡Mantengámonos en contacto!</h2>
             <hr class="primary">
-            <p>¿Listo para comenzar tu próximo proyecto con nosotros? ¡Eso es genial! Llámenos o envíenos un correo electrónico y nos pondremos en contacto con usted lo antes posible.</p>
+            <p>¿Listo para comenzar tu próximo proyecto con nosotros? ¡Eso es genial! Envíenos su consulta y nos pondremos en contacto con usted lo antes posible.</p>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-4 ml-auto text-center">
-            <i class="fa fa-phone fa-3x sr-contact"></i>
-            <p>011-15 3000 1604</p>
-          </div>
-          <div class="col-lg-4 mr-auto text-center">
-            <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-            <p>
-              <a href="mailto:your-email@your-domain.com">cristianzenteno87@gmail.com</a>
-            </p>
-          </div>
+			
+			<div class="col-lg-8 mx-auto text-center">
+				<h2 class="section-heading">Envianos tu consulta</h2>
+				<form action="https://formspree.io/cristianzenteno87@gmail.com" method="POST">
+					<div class="form-group row">
+					  <label for="txtNombre" class="col-2 col-form-label">Nombre</label>
+					  <div class="col-10">
+						<input class="form-control" type="text" placeholder="Juan Pablo" id="txtNombre" required>
+					  </div>
+					</div>
+					<div class="form-group row">
+					  <label for="txtApellido" class="col-2 col-form-label">Apellido</label>
+					  <div class="col-10">
+						<input class="form-control" type="text" placeholder="Perez"  id="txtApellido" required>
+					  </div>
+					</div>
+					<div class="form-group row">
+					  <label for="txtMail" class="col-2 col-form-label">Email</label>
+					  <div class="col-10">
+						<input class="form-control" type="email" placeholder="juan.perez@example.com" id="txtMail" required>
+					  </div>
+					</div>
+
+					<div class="form-group row">
+					  <label for="txtTelefono" class="col-2 col-form-label">Teléfono</label>
+					  <div class="col-10">
+						<input class="form-control" type="text" placeholder="15 1234 56789" id="txtTelefono" required>
+					  </div>
+					</div>
+					
+					<div class="form-group row">
+					  <label for="txtConsulta" class="col-2 col-form-label">Consulta</label>
+					  <div class="col-10">
+						<textarea class="form-control" placeholder="Escribinos tu consulta aqui ... " id="txtConsulta" rows="7" required></textarea>
+					  </div>
+					</div>
+					
+					<button type="submit" class="btn btn-primary">Enviar</button>
+
+				</form>
+			</div>
         </div>
       </div>
     </section>
@@ -272,5 +303,8 @@
 </script>
 
   </body>
+  <footer class="bg-primary" >
+        <p class="section-heading text-white">© Copyright 2017 - Zeta It. All rights reserved.</p>
+  </footer>
 
 </html>
