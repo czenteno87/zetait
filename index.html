@@ -240,11 +240,11 @@
 			
 			<div class="col-lg-8 mx-auto text-center">
 				<h2 class="section-heading">Envianos tu consulta</h2>
-				<form action="https://formspree.io/cristianzenteno87@gmail.com" method="POST">
+				<form id="contactform" method="POST">
 					<div class="form-group row">
 					  <label for="txtNombre" class="col-2 col-form-label">Nombre</label>
 					  <div class="col-10">
-						<input class="form-control" type="text" placeholder="Juan Pablo" id="txtNombre" required>
+						<input class="form-control" type="text" name="name" placeholder="Juan Pablo" id="txtNombre" required>
 					  </div>
 					</div>
 					<div class="form-group row">
@@ -256,7 +256,7 @@
 					<div class="form-group row">
 					  <label for="txtMail" class="col-2 col-form-label">Email</label>
 					  <div class="col-10">
-						<input class="form-control" type="email" placeholder="juan.perez@example.com" id="txtMail" required>
+						<input class="form-control" type="email" name="_replyto" placeholder="juan.perez@example.com" id="txtMail" required>
 					  </div>
 					</div>
 
@@ -270,9 +270,14 @@
 					<div class="form-group row">
 					  <label for="txtConsulta" class="col-2 col-form-label">Consulta</label>
 					  <div class="col-10">
-						<textarea class="form-control" placeholder="Escribinos tu consulta aqui ... " id="txtConsulta" rows="7" required></textarea>
+						<textarea class="form-control" name="message" placeholder="Escribinos tu consulta aqui ... " id="txtConsulta" rows="7" required></textarea>
 					  </div>
 					</div>
+					
+					<input type="hidden" name="_subject" value="Consultas por ZETA IT" />
+					<input type="hidden" name="_cc" value="nahuel-zenteno@hotmail.com" />
+					<input type="hidden" name="_next" value="//www.zetait.com.ar/" />
+					<input type="text" name="_gotcha" style="display:none" />
 					
 					<button type="submit" class="btn btn-primary">Enviar</button>
 
@@ -299,7 +304,33 @@
         
         $(document).ready(function(){
             $('body').find('img[src$="https://cloud.githubusercontent.com/assets/23024110/20663010/9968df22-b55e-11e6-941d-edbc894c2b78.png"]').parent().closest('a').closest('div').remove();
-        });
+			
+			var $contactForm = $('#contactform');
+			$contactForm.submit(function(e) {
+				e.preventDefault();
+				$.ajax({
+					url: '//formspree.io/cristianzenteno87@gmail.com',
+					method: 'POST',
+					data: $(this).serialize(),
+					dataType: 'json',
+					beforeSend: function() {
+						$contactForm.append('<div class="alert alert--loading">Sending message…</div>');
+					},
+					success: function(data) {
+						$contactForm.find('.alert--loading').hide();
+						$contactForm.append('<div class="alert alert--success">Message sent!</div>');
+					},
+					error: function(err) {
+						$contactForm.find('.alert--loading').hide();
+						$contactForm.append('<div class="alert alert--error">Ops, there was an error.</div>');
+					}
+				});
+			});
+		
+		});
+		
+		//var contactform =  document.getElementById('contactform');
+		//contactform.setAttribute('action', '//formspree.io/' + 'cristianzenteno87' + '@' + 'gmail' + '.' + 'com');
 </script>
 
   </body>
